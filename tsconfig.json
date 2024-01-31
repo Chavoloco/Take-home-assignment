@@ -1,19 +1,34 @@
 {
-    "compilerOptions": {
-        "target": "es5",
-        "lib": [
-            "es6",
-            "dom"
-        ],
-        "types": [
-            "cypress"
-        ],
-        "module": "commonjs",
-        "strict": true,
-        "baseUrl": "./",
-        "esModuleInterop": true
-    },
-    "include": [
-        "**/*.ts"
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "target": "ES5",
+    "module": "commonjs",
+    "lib": [
+      "ES5",
+      "DOM"
+    ],
+    "strict": true,
+    "sourceMap": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "declarationDir": "./dist",
+    "outDir": "./dist",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "types": [
+      "./support/commands.d.ts",
+      "cypress"
     ]
+  },
+  "include": [
+    "src/**/*.ts",
+    "*.js"
+  ],
+  "exclude": [
+    "node_modues"
+  ]
 }

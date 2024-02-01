@@ -1,8 +1,10 @@
+/// <reference path="../support/commands.d.ts" />
+
 import crypto from 'crypto';
 
 const secretKey = process.env.SECRET_KEY
 
-Cypress.Commands.add('encrypt', (data) => {
+Cypress.Commands.add('encrypt', (data: string) => {
   const cipher = crypto.createCipher('aes-256-cbc', secretKey)
   let encryptedData = cipher.update(data, 'utf-8', 'hex')
   console.log(encryptedData += cipher.final('hex'));

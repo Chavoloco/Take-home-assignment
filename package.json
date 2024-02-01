@@ -18,17 +18,18 @@
   },
   "homepage": "https://github.com/Chavoloco/Take-home-assignment#readme",
   "devDependencies": {
-    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
+    "@types/chai": "^4.3.11",
+    "@types/cypress-dotenv": "^2.0.3",
     "@types/dotenv": "^8.2.0",
     "@types/jsonwebtoken": "^9.0.5",
+    "chai": "*",
+    "chai-colors": "*",
     "cypress": "^13.6.4",
     "cypress-dotenv": "^2.0.0",
+    "cypress-xpath": "^2.0.1",
     "dotenv": "^16.4.1",
     "jsonwebtoken": "^9.0.2",
+    "mocha": "*",
     "typescript": "^5.3.3"
-  },
-  "dependencies": {
-    "@badeball/cypress-cucumber-preprocessor": "^20.0.1",
-    "cypress-xpath": "^2.0.1"
   }
 }

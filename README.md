@@ -14,9 +14,9 @@ To run this repository you must:
    ` git clone git@github.com:Chavoloco/Take-home-assignment.git `
     
     2. install dependencies: 
-        npm i
+        ` npm i ` 
 
     3. paste .env in the root project folder.
 
     4. run command:
-        npm run cypress:open
+        ` npm run cypress:open ` 

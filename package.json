@@ -23,6 +23,7 @@
     "@types/crypto-js": "^4.2.2",
     "@types/cypress-dotenv": "^2.0.3",
     "@types/dotenv": "^8.2.0",
+    "@types/fs-extra": "^11.0.4",
     "@types/jsonwebtoken": "^9.0.5",
     "chai": "*",
     "chai-colors": "*",
@@ -30,6 +31,7 @@
     "cypress-dotenv": "^2.0.0",
     "cypress-xpath": "^2.0.1",
     "dotenv": "^16.4.1",
+    "fs-extra": "^11.2.0",
     "jsonwebtoken": "^9.0.2",
     "mocha": "*",
     "typescript": "^5.3.3"

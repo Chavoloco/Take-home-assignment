@@ -25,9 +25,11 @@ class Login {
     get passwordInput() { return cy.get('input[type="password"]') }
     get submitPasswordBtn() { return cy.get('bs-square-button#btn-submit-oath') }
     get verificationCodeContainer() { return cy.get('ng-component.ng-star-inserted') }
+    get firstSignUpInput() { return cy.get('input#input-3') }
+    get secondSignUpInput() { return cy.get('input#input-4') }
+    get acceptTermsAndConditionsInput() { return cy.get('label.mat-checkbox-layout') }
 
     public fillLoginForm(username: string, password: string) {
-        home.goToLoginPage()
         this.usernameInput.type(username)
         this.submitUsernameBtn.click()
         this.errorInputMessage.should('not.exist')
@@ -41,11 +43,26 @@ class Login {
     }
 
     public fillLoginFormInexistentUser(username: string) {
-        home.goToLoginPage()
         this.usernameInput.type(username)
         this.submitUsernameBtn.click()
         this.errorInputMessage.should('not.exist')
     }
+
+    public fillSignUpForm(username: string, password: string) {
+        this.usernameInput.type(username)
+        this.submitUsernameBtn.click()
+        this.errorInputMessage.should('not.exist')
+        cy.wait(2500)
+        this.loginModal.should('be.visible')
+        cy.wait(500)
+        this.firstSignUpInput.type(password)
+        this.secondSignUpInput.type(password)
+        this.submitPasswordBtn.click()
+        this.acceptTermsAndConditionsInput.click()
+        cy.wait(2500)
+        
+    }
+
 }
 
 

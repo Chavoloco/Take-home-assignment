@@ -5,6 +5,7 @@ export default defineConfig({
   e2e: {
     baseUrl: "https://www.beatstars.com",
     supportFile: "cypress/support/e2e.ts",
+    chromeWebSecurity: false,
     async setupNodeEvents(on: Cypress.PluginEvents, config: Cypress.PluginConfigOptions): Promise<Cypress.PluginConfigOptions> {
 
       config = dotenvPlugin(config)

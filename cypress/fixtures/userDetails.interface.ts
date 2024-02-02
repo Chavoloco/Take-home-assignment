@@ -4,4 +4,5 @@ export interface UserDetails {
     password: string
     invalidUsername: string
     invalidPassword: string
+    usernameForCreation: string
   }

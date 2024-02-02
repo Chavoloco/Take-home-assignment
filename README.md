@@ -1,6 +1,6 @@
 # Beatstars Cypess E2E 
 
-This repository contains the E2E testing framework build in cypress
+This repository contains the E2E testing framework build in cypress for [Beatstars](https://www.beatstars.com/)
 
 ## Requirements
     - Node.js: v18
@@ -10,13 +10,15 @@ This repository contains the E2E testing framework build in cypress
 
 To run this repository you must:
     1. Clone the repository:
-    ```git clone git@github.com:Chavoloco/Take-home-assignment.git```
+    ```
+    git clone git@github.com:Chavoloco/Take-home-assignment.git
     
-
+    ```
+    
     2. install dependencies: 
-        ```npm i```
+        `npm i`
 
     3. paste `.env` in the root project folder.
 
     4. run command:
-        ```npm run cypress:open```
+        `npm run cypress:open`

@@ -1,5 +1,7 @@
 {
   "username": "jeremiasbertoldi9",
-  "email": "jeremiasbertoldi9@gmail.com",
-  "password": "Password1!"
+  "email": "U2FsdGVkX1/40I3CMYZR9BL5Uz2zUAzmxzzxv3VLeAoJ5Kh9ahnGfrW0a7/l6rXb",
+  "password": "U2FsdGVkX19y1MEYphBXHHDplZQ+4I2otEo0pC/yvdI=", 
+  "invalidUsername": "thisisaninvalidusername",
+  "invalidPassword": "thisisaninvalidpassword"
 }

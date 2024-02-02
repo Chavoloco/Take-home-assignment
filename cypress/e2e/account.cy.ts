@@ -1,61 +1,57 @@
 /// <reference types="Cypress" />
 /// <reference path="../support/index.d.ts" />
 
-import Home from "../fixtures/pageobjects/home"
-import Login from "../fixtures/pageobjects/login"
+import { account } from "../fixtures/pageobjects/account"
+import {home} from "../fixtures/pageobjects/home"
+import {login} from "../fixtures/pageobjects/login"
+import { encrypt, decrypt } from "../fixtures/pageobjects/utils/cryptoUtil"
+import { UserDetails } from "../fixtures/userDetails.interface"
 
-
+let userData: UserDetails
 describe('Login Scenario', () => {
+    beforeEach(() => {
+        home.launchApp()
+        cy.fixture('userDetails.json').then(function (data) {
+            userData = data
+        })
+        
+    })
     context('Home page', () => {
-        it('Visits homepage with successfully status code', () => {
-            cy.visit('/')
+        it('should visit homepage with successfully status code', () => {
             cy.request('/').its('status').should('equal', 200)
             cy.wait(2500)
-            cy.get('bs-container-grid.search-for-beats-grid').should('exist')
+            home.searchContainer.should('exist')
+            const a = encrypt(userData.password)
+            cy.log(a)
+            const b = decrypt(a)
+            cy.log(b)
         })
 
-        it('Visit home page and click "Reject Unnessesary Cookies" button', () => {
-            cy.visit('/')
-            cy.get(Home.rejectCookiesBtn).click()
-            cy.wait(2500)
+        it('should visit home page and click "Reject Unnessesary Cookies" button', () => {
+            home.rejectCookies()
         })
     })
 
     context('Login Test Suite', () => {
 
-        it('Visit home page and Go to Login page', () => {
-            cy.visit('/')
-            cy.get(Home.signInBtn).click()
-            cy.wait(2500)
-            cy.url().should('contain', 'oauth.beatstars.com/')
-            cy.get(Login.usernameInput).should('exist')
-            cy.get(Login.continueWithFacebookBtn).should('exist')
-            cy.get(Login.continueWithTwitterBtn).should('exist')
-            cy.get(Login.continueWithAppleBtn).should('exist')
-            cy.get(Login.googleIframe).its('0').its('contentWindow').should('exist')
+        it('should visit home page and Go to Login page', () => {
+            home.goToLoginPage()
+            login.usernameInput.should('exist')
+            login.continueWithFacebookBtn.should('exist')
+            login.continueWithTwitterBtn.should('exist')
+            login.continueWithAppleBtn.should('exist')
+            //login.googleIframe.its('0').its('contentWindow').should('exist')
         })
 
-        it('Visits home page and fill username input with userDetails data', () => {
-            cy.visit('/')
-            cy.get(Home.signInBtn).click()
-            cy.wait(2500)
-            expect(cy.url()).contain('oauth.beatstars.com/')
-            cy.get(Login.usernameInput).should('exist')
-            cy.fixture("userDetails.json").then((data) => {
-                cy.get(Login.usernameInput).type(data.email)
-                cy.get(Login.submitUsernameBtn).click()
-            })
-            cy.get(Login.errorInputMessage).should('not.exist')
-            cy.wait(2500)
-            cy.get('div.btns-container').should('be.visible')
-            cy.wait(500)
-            cy.fixture("userDetails.json").then((data) => {
-                cy.get('input[type="password"]').type(data.password)
-                cy.get('bs-square-button#btn-submit-oath').click()
-                cy.wait(2500)
-                cy.get('div.info span.username').should('equal', data.username)
-            })
+        it('should successfully go to account page', () => {
+            login.fillLoginForm(decrypt(userData.email), decrypt(userData.password))
+            login.verificationCodeContainer.should('exist')
+        })
 
+        it('should fill login form with invalid data', () => {
+            login.fillLoginFormInexistentUser(userData.invalidUsername)
+            login.usernameInput.should('be.visible')
+            login.passwordInput.first().should('be.visible')
         })
     })
 

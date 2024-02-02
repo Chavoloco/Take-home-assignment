@@ -9,6 +9,7 @@ This repository contains the E2E testing framework build in cypress for [Beatsta
 ## Getting Started
 
 To run this repository you must:
+- 
     1. Clone the repository:
    ` git clone git@github.com:Chavoloco/Take-home-assignment.git `
     

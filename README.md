@@ -15,7 +15,7 @@ To run this repository you must:
     2. install dependencies: 
         npm i
 
-    3. paste `.env` in the root project folder.
+    3. paste .env in the root project folder.
 
     4. run command:
         npm run cypress:open
